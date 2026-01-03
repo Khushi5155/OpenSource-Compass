@@ -1,83 +1,57 @@
 let programs = [];
 
-const grid = document.getElementById("programsGrid");
-const searchBar = document.getElementById("searchBar");
-const categoryFilter = document.getElementById("categoryFilter");
-
-async function init() {
-    try {
-        const response = await fetch("data/programs.json");
-        programs = await response.json();
-        renderPrograms(programs);
-    } catch (err) {
-        console.error("Data fetch failed", err);
-        grid.innerHTML = `<p style="color:#9ca3af;">Failed to load programs.</p>`;
-    }
-}
-
-function renderPrograms(data) {
-    grid.innerHTML = "";
-
-    if (data.length === 0) {
-        grid.innerHTML = `<p style="color:#9ca3af;">No programs found.</p>`;
-        return;
-    }
-
-    data.forEach(program => {
-        const badgeClass =
-            program.difficulty === "Beginner Friendly"
-                ? "Beginner"
-                : program.difficulty;
-
-        const card = document.createElement("div");
-        card.className = "program-card fade-in-up active";
-
-        card.innerHTML = `
-            <h3 class="program-title">${program.name}</h3>
-            <p class="program-desc">${program.description}</p>
-
-            <div class="program-meta">
-                <span class="badge ${badgeClass}">
-                    ${program.difficulty || program.category}
-                </span>
-                <a class="program-link" href="${program.link}" target="_blank">
-                    Learn More →
-                </a>
-            </div>
-
-            ${
-                program.timeline
-                    ? `<p><strong>Timeline:</strong> ${program.timeline}</p>`
-                    : ""
-            }
-            ${
-                program.stipend
-                    ? `<p><strong>Stipend:</strong> ${program.stipend}</p>`
-                    : ""
-            }
-        `;
-
-        grid.appendChild(card);
+// Load JSON data
+fetch("program.json")
+    .then(res => res.json())
+    .then(data => {
+        programs = data;
+        renderPrograms();
     });
+
+function renderPrograms(filtered = programs) {
+    const container = document.getElementById("programsContainer");
+    container.innerHTML = filtered.map(p => `
+        <div class="program-card" onclick="openModal(${p.id})">
+            <div class="program-header">
+                <h3>${p.name}</h3>
+                <span class="program-status status-${p.status.toLowerCase()}">${p.status}</span>
+            </div>
+            <p>${p.description}</p>
+            <div class="badge">${p.difficulty}</div>
+        </div>
+    `).join("");
 }
+
+function openModal(id) {
+    const program = programs.find(p => p.id === id);
+    document.getElementById("modalBody").innerHTML = `
+        <h2>${program.name}</h2>
+        <p>${program.description}</p>
+        <h3>Issues</h3>
+        <ul>${program.issues_list.map(i => `<li>${i}</li>`).join("")}</ul>
+    `;
+    document.getElementById("programModal").style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("programModal").style.display = "none";
+}
+
+/* Filters */
+document.getElementById("difficultyFilter").addEventListener("change", filterPrograms);
+document.getElementById("statusFilter").addEventListener("change", filterPrograms);
+document.getElementById("searchBox").addEventListener("input", filterPrograms);
 
 function filterPrograms() {
-    const searchText = searchBar.value.toLowerCase();
-    const category = categoryFilter.value;
+    const d = difficultyFilter.value;
+    const s = statusFilter.value;
+    const q = searchBox.value.toLowerCase();
 
-    const filtered = programs.filter(program => {
-        const matchesSearch = program.name.toLowerCase().includes(searchText);
-        const matchesCategory =
-            category === "all" ||
-            program.difficulty === category ||
-            program.category === category;
-
-        return matchesSearch && matchesCategory;
-    });
+    const filtered = programs.filter(p =>
+        (!d || p.difficulty === d) &&
+        (!s || p.status === s) &&
+        (!q || p.name.toLowerCase().includes(q))
+    );
 
     renderPrograms(filtered);
 }
-
-searchBar.addEventListener("input", filterPrograms);
-categoryFilter.addEventListener("change", filterPrograms);
-document.addEventListener("DOMContentLoaded", init);

@@ -2,42 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Programs - OpenSource Compass</title>
+    <title>Dashboard - OpenSource Compass</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
     <link rel="stylesheet" href="../css/program.css">
 </head>
+
 <body>
 
+<!-- Navbar -->
 <header>
-    <h1><a href="index.html">OpenSource Compass</a></h1>
+    <h1 onclick="window.location.href='index.html'">OpenSource Compass</h1>
     <nav>
         <a href="index.html">Home</a>
-        <a href="guides.html">Guides</a>
-        <a href="programs.html" class="active">Programs</a>
-        <a href="Resources.html">Resources</a>
+        <a href="#">Guides</a>
+        <a href="dashboard.html">Programs</a>
+        <a href="#">Resources</a>
+        <a href="#">Contribute</a>
     </nav>
 </header>
 
-<section class="filter-container">
-    <input type="text" id="searchBar" class="filter-input" placeholder="Search by name...">
-    <select id="categoryFilter" class="filter-input">
-        <option value="all">All Difficulty Levels</option>
-        <option value="Beginner Friendly">Beginner Friendly</option>
+<!-- Dashboard Header -->
+<div class="dashboard-header">
+    <h2>Open Source Programs Dashboard</h2>
+    <p>Explore diverse open-source programs, learn about their contributions, and find issues to work on</p>
+</div>
+
+<!-- Filter Section -->
+<div class="filter-section">
+    <label for="difficultyFilter">Difficulty:</label>
+    <select id="difficultyFilter">
+        <option value="">All Levels</option>
+        <option value="Beginner">Beginner</option>
         <option value="Intermediate">Intermediate</option>
         <option value="Advanced">Advanced</option>
     </select>
-</section>
 
-<div class="programs-grid-container">
-    <div id="programsGrid" class="card-container">
-        </div>
+    <label for="statusFilter">Status:</label>
+    <select id="statusFilter">
+        <option value="">All Status</option>
+        <option value="Active">Active</option>
+        <option value="Upcoming">Upcoming</option>
+        <option value="Completed">Completed</option>
+    </select>
+
+    <input type="text" id="searchBox" class="search-box" placeholder="Search programs...">
 </div>
 
+<!-- Programs Container -->
+<div class="programs-container" id="programsContainer"></div>
+
+<!-- Modal -->
+<div id="programModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<!-- Footer -->
 <footer>
     <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
 </footer>
 
+<!-- External JS -->
 <script src="../Js_scripts/programs.js"></script>
 </body>
 </html>

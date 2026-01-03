@@ -2,21 +2,25 @@
   {
     "id": 1,
     "name": "Google Summer of Code",
-    "category": "Advanced",
-    "stipend": "Stipend-based",
-    "timeline": "May - August",
-    "description": "Global program for advanced contributors to work on open source projects.",
-    "link": "gsoc.html",
-    "status": "Active"
+    "description": "Google's annual open source program.",
+    "status": "Active",
+    "difficulty": "Advanced",
+    "issues_list": [
+      "Fix pagination",
+      "Implement dark mode",
+      "Optimize queries"
+    ]
   },
   {
     "id": 2,
-    "name": "Social Summer of Code",
-    "category": "Beginner Friendly",
-    "stipend": "Perks-based",
-    "timeline": "June - August",
-    "description": "Community-driven program for open-source beginners with a focus on social impact.",
-    "link": "ssoc.html",
-    "status": "Active"
+    "name": "GirlScript Summer of Code",
+    "description": "Beginner friendly open source program.",
+    "status": "Active",
+    "difficulty": "Beginner",
+    "issues_list": [
+      "Landing page UI",
+      "Responsive fixes",
+      "Add search"
+    ]
   }
 ]
