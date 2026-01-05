@@ -5,10 +5,9 @@
     <title>OpenSource Compass</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-        <style>
+    <style>
         :root {
             --primary-blue: #1F3C88;
             --secondary-blue: #4D96FF;
@@ -124,6 +123,9 @@
             transition: 
                 transform 0.3s ease,
                 box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card:hover {
@@ -150,6 +152,7 @@
             border-radius: 12px;
             font-size: 12px;
             margin-top: 10px;
+            width: fit-content;
         }
 
         /* ---------- Footer ---------- */
@@ -206,7 +209,6 @@
 
 <body>
 
-<!-- Navbar -->
 <header>
     <h1>OpenSource Compass</h1>
     <div class="hamburger">
@@ -215,7 +217,7 @@
         <div></div>
     </div>
     <nav>
-        <div class="close-icon">X</div>
+        
         <a href="#">Home</a>
         <a href="#">Guides</a>
         <a href="#">Programs</a>
@@ -224,7 +226,6 @@
     </nav>
 </header>
 
-<!-- Hero Section -->
 <section class="hero">
     <h2>Navigate Your Open Source Journey</h2>
     <p>
@@ -235,7 +236,6 @@
     <button>Get Started</button>
 </section>
 
-<!-- Why Section -->
 <section>
     <h3>Why OpenSource Compass?</h3>
     <p>
@@ -262,7 +262,6 @@
     </div>
 </section>
 
-<!-- Programs Section -->
 <section class="programs">
     <h3>Open Source Programs</h3>
     <p>
@@ -270,58 +269,10 @@
         prerequisites, and official resources.
     </p>
 
-    <div class="card-container">
-        <div class="card">
-            <h4>Social Winter of Code</h4>
-            <p>Beginner-focused winter open-source program.</p><br><br>
-            <span class="badge">Upcoming</span>
+    <div class="card-container" id="programs-container">
         </div>
-
-        <div class="card">
-            <h4>GirlScript Summer of Code</h4>
-            <p>Large-scale open-source program for students.</p><br><br>
-            <span class="badge">Annual</span>
-        </div>
-
-        <div class="card">
-            <h4>Google Summer of Code</h4>
-            <p>Global program for advanced contributors.</p><br><br>
-            <span class="badge">Advanced</span>
-        </div>
-
-        <div class="card">
-            <h4>Hacktoberfest (by DigitalOcean)</h4>
-            <p>Global event encouraging first-time open-source participation.</p>
-            <span class="badge">Beginner</span>
-        </div>
-
-        <div class="card">
-            <h4>Winter of Code (WoC)</h4>
-            <p>Mentorship-based program for student contributors.</p><br>
-            <span class="badge">Beginner → Intermediate</span>
-        </div>
-
-        <div class="card">
-            <h4>Social Summer of Code (SSoC)</h4>
-            <p>Community-driven program for open-source beginners.</p>
-            <span class="badge">Beginner</span>
-        </div>
-
-        <div class="card">
-            <h4>Outreachy</h4>
-            <p>Paid internship program for underrepresented contributors.</p>
-            <span class="badge">Intermediate</span>
-        </div>
-
-        <div class="card">
-            <h4>Linux Foundation Mentorship Program</h4>
-            <p>Industry-backed program for open-source development.</p>
-            <span class="badge">Intermediate</span>
-        </div>
-    </div>
 </section>
 
-<!-- Footer -->
 <footer>
     <p>© 2025 OpenSource Compass • Built for the Open Source Community</p>
 </footer>
@@ -349,8 +300,7 @@
     });
 </script>
 
+<script src="Js_scripts/main.js"></script>
+
 </body>
 </html>
-
-
-
