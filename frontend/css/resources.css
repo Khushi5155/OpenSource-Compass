@@ -256,7 +256,7 @@ section p {
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--hover-sh;
+  box-shadow: var(--hover-shadow);
 }
 
 .card h4 {
