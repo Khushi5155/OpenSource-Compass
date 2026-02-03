@@ -7,17 +7,17 @@
 
 // Helper to determine the correct path prefix based on current location
 function getPath(path) {
-    const isPagesDir = window.location.pathname.includes('/pages/');
-    // If we are in 'pages/', we need to go up two levels (../../) to get to root for index.html
-    // or use relative paths for siblings.
-    if (path.startsWith('index.html')) {
-        return isPagesDir ? '../../' + path : './' + path;
-    }
-    // For assets in frontend/
-    if (path.startsWith('frontend/')) {
-        return isPagesDir ? '../../' + path : './' + path;
-    }
-    return path;
+  const isPagesDir = window.location.pathname.includes('/pages/');
+  // If we are in 'pages/', we need to go up two levels (../../) to get to root for index.html
+  // or use relative paths for siblings.
+  if (path.startsWith('index.html')) {
+    return isPagesDir ? '../../' + path : './' + path;
+  }
+  // For assets in frontend/
+  if (path.startsWith('frontend/')) {
+    return isPagesDir ? '../../' + path : './' + path;
+  }
+  return path;
 }
 
 const navbarHTML = `
@@ -36,6 +36,7 @@ OpenSource Compass
             <a href="${getPath('frontend/pages/contributors.html')}">Contributors</a>
             <a href="${getPath('frontend/pages/faq.html')}">FAQ</a>
             <a href="${getPath('frontend/pages/Contribute.html')}">Contribute</a>
+            <a href="${getPath('frontend/pages/feedback.html')}">Feedback</a>
            <button
   id="themeToggle"
   aria-label="Toggle dark mode"
@@ -116,6 +117,9 @@ const footerHTML = `
         <span class="footer-pill"><i class="fas fa-shield"></i> Community-safe</span>
         <span class="footer-pill"><i class="fas fa-bolt"></i> Beginner-ready</span>
         <span class="footer-pill"><i class="fas fa-code-branch"></i> Open source</span>
+        <button id="pwa-install-btn" class="footer-pill" style="display: none; cursor: pointer; border: none; font-family: inherit; font-size: inherit; margin-left:10px;">
+            <i class="fas fa-download"></i> Install App
+        </button>
       </div>
 
       <div class="footer-meta">
@@ -139,8 +143,8 @@ const footerContainer = document.getElementById('footer');
 
 if (navbarContainer) navbarContainer.innerHTML = navbarHTML;
 if (footerContainer) {
-    footerContainer.innerHTML = footerHTML;
-    const yearEl = document.getElementById('footer-year');
-    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  footerContainer.innerHTML = footerHTML;
+  const yearEl = document.getElementById('footer-year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 }
 
