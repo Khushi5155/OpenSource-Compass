@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" href="frontend/css/style.css"/>
     <link rel="stylesheet" href="frontend/css/home.css" />
+      <link rel="stylesheet" href="frontend/css/chatbot.css" />
   </head>
   <body>
   <div id="cursor-highlight" aria-hidden="true"></div>
@@ -34,92 +35,6 @@
             <span class="hero-dot" aria-hidden="true"></span>
             Your map to open source
           </div>
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta property="og:title" content="OpenSource Compass" />
-  <meta property="og:description"
-    content="OpenSource Compass is a platform that helps beginners navigate open source by providing structured guides, resources, and program information." />
-  <meta property="og:image" content="https://sayeeg-11.github.io/OpenSource-Compass/public/preview-image.png" />
-  <meta property="og:url" content="https://sayeeg-11.github.io/OpenSource-Compass" />
-  <meta property="og:type" content="website" />
-  <title>OpenSource Compass</title>
-  <meta name="description"
-    content="OpenSource Compass helps you start, learn, and grow in open source with curated guides, programs, and resources." />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="icon" href="./frontend/library/assets/favicon.png" type="image/png" />
-  <link rel="stylesheet" href="frontend/css/style.css" />
-  <link rel="stylesheet" href="frontend/css/home.css" />
-
-  <style>
-    #scrollTopBtn {
-      display: flex !important;
-      /* Enables Flexbox centering */
-      justify-content: center !important;
-      /* Horizontally center */
-      align-items: center !important;
-      /* Vertically center */
-      padding: 0 !important;
-      /* Remove padding that offsets the icon */
-      line-height: 0 !important;
-      /* Reset line height for precise icons */
-    }
-
-    /* --- FEATURE: Golden Glow Hover Effect for Legendary Cards --- */
-    #programs .card {
-      transition: all 0.3s ease-in-out;
-    }
-
-    #programs .card:hover {
-      /* Golden/Yellow Glow */
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6) !important;
-      /* Lift effect */
-      transform: translateY(-5px);
-      /* Gold border */
-      border-color: rgba(255, 215, 0, 0.8) !important;
-    }
-    
-    /* --- NEW: Golden Glow Hover Effect for Milestone Stats Cards --- */
-    .stats .stat-card {
-      transition: all 0.3s ease-in-out;
-      border-radius: 12px; /* Ensures glow follows rounded corners if present */
-    }
-
-    .stats .stat-card:hover {
-      /* Stronger Golden Glow from the back */
-      box-shadow: 0 0 40px rgba(255, 215, 0, 0.5) !important;
-      transform: translateY(-5px);
-      z-index: 2; /* Ensures it pops out above neighbors */
-    }
-
-    /* --- FIX: Timeline Z-Index Layering --- */
-    /* This ensures the golden icons sit ON TOP of the connecting vertical line */
-    .compass-step .compass-icon {
-      position: relative;
-      z-index: 10;
-    }
-
-    /* Ensure the timeline line stays in the back */
-    .compass-timeline {
-      position: relative;
-      z-index: 1;
-    }
-  </style>
-  <link rel="stylesheet" href="frontend/css/recommendations.css" />
-
-</head>
-
-<body>
-  <div id="navbar"></div>
-
-  <section class="hero" aria-label="OpenSource Compass hero">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-eyebrow">
-          <span class="hero-dot" aria-hidden="true"></span>
-          Your map to open source
-        </div>
 
         <h2>Navigate Your Open Source Odyssey</h2>
         <p>
@@ -237,19 +152,21 @@
 </section>
 
 <section class="programs">
-    <h3>Open Source Programs</h3>
-    <p>
-        Explore ongoing and upcoming open-source programs with timelines,
-        prerequisites, and official resources.
-    </p>
+  <h3>Open Source Programs</h3>
+  <p>
+    Explore ongoing and upcoming open-source programs with timelines,
+    prerequisites, and official resources.
+  </p>
 
-    <div class="card-container">
-        <div class="card">
-            <h4>Social Winter of Code</h4>
-            <p>Beginner-focused winter open-source program.</p>
-            <span class="badge">Upcoming</span>
-      </div>
-    </section>
+  <div class="card-container">
+    <div class="card">
+      <h4>Social Winter of Code</h4>
+      <p>Beginner-focused winter open-source program.</p>
+      <span class="badge">Upcoming</span>
+    </div>
+  </div>
+</section>
+
 
     <main>
       <section id="why">
@@ -458,9 +375,17 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <script src="frontend/js/components.js"></script>
-  <script src="frontend/js/theme.js"></script>
-  <script src="frontend/js/home.js"></script>
+<script src="frontend/js/components.js"></script>
+<script src="frontend/js/theme.js"></script>
+<script src="frontend/js/home.js"></script>
+
+<!-- OpenSource Guide Chatbot Mount -->
+<div id="opensource-chatbot"></div>
+
+<!-- OpenSource Guide Chatbot -->
+<script src="frontend/js/chatbot.js"></script>
+
+
 </body>
 
 </html>
